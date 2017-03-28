@@ -14,7 +14,7 @@ import (
 )
 
 // NewRouter returns a new router instance.
-// Hello World!
+// Hello World! Foo!
 func NewRouter() *Router {
 	return &Router{namedRoutes: make(map[string]*Route), KeepContext: false}
 }
