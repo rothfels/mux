@@ -27,7 +27,7 @@ func TestKeepContext(t *testing.T) {
 		t.Error("Context should have been cleared at end of request")
 	}
 
-	r.KeepContext = true
+	r.RenamedKeepContext = true
 
 	req, _ = http.NewRequest("GET", "http://localhost/", nil)
 	context.Set(req, "t", 1)

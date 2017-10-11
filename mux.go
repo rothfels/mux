@@ -16,7 +16,7 @@ import (
 // NewRouter returns a new router instance.
 // Hello World!
 func NewRouter() *Router {
-	return &Router{namedRoutes: make(map[string]*Route), KeepContext: false}
+	return &Router{namedRoutes: make(map[string]*Route), RenamedKeepContext: false}
 }
 
 // Router registers routes to be matched and dispatches a handler.
@@ -53,7 +53,7 @@ type Router struct {
 	// If true, do not clear the request context after handling the request.
 	// This has no effect when go1.7+ is used, since the context is stored
 	// on the request itself.
-	KeepContext bool
+	RenamedKeepContext bool
 	// see Router.UseEncodedPath(). This defines a flag for all routes.
 	useEncodedPath bool
 }
@@ -109,7 +109,7 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	if handler == nil {
 		handler = http.NotFoundHandler()
 	}
-	if !r.KeepContext {
+	if !r.RenamedKeepContext {
 		defer contextClear(req)
 	}
 	handler.ServeHTTP(w, req)
