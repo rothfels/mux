@@ -50,6 +50,7 @@ type Router struct {
 	strictSlash bool
 	// See Router.SkipClean(). This defines the flag for new routes.
 	skipClean bool
+
 	// If true, do not clear the request context after handling the request.
 	// This has no effect when go1.7+ is used, since the context is stored
 	// on the request itself.
